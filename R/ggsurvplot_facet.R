@@ -154,6 +154,15 @@ ggsurvplot_facet <- function(fit, data, facet.by,
 
   ggsurv <- ggsurvplot_core(fit, data = data, color = color, palette = palette,
                             legend.labs = legend.labs, ...)
+  
+  # Fix the factor levels to match the input data so the facets are ordered correctly
+  #:::::::::::::::::::::::::::::::::::::::::
+  
+  for(variable in facet.by){
+    levels(ggsurv$plot$data[[variable]]) <- levels(data[[variable]])
+    levels(ggsurv$data.survplot[[variable]]) <- levels(data[[variable]])
+    levels(ggsurv$data.survtable[[variable]]) <- levels(data[[variable]])
+  }
 
 
   # Faceting the main plot
