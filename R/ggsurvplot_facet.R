@@ -233,11 +233,11 @@ ggsurvplot_facet <- function(fit, data, facet.by,
 
   if(length(facet.by) == 1){
     facet.formula <- paste0("~", facet.by) %>% stats::as.formula()
-    p <- p + facet_wrap(facet.formula, nrow = nrow, ncol = ncol, scales = scales, labeller = .labeller)
+    p <- p + facet_rep_wrap(facet.formula, nrow = nrow, ncol = ncol, scales = scales, labeller = .labeller, repeat.tick.labels = c('bottom','left'))
   }
   else if(length(facet.by) == 2){
     facet.formula <- paste(facet.by, collapse = " ~ ") %>% stats::as.formula()
-    p <- p + facet_grid(facet.formula, scales = scales, labeller = .labeller)
+    p <- p + facet_rep_grid(facet.formula, scales = scales, labeller = .labeller, repeat.tick.labels = c('bottom','left'))
   }
 
   if(!.is_empty(panel.labs.background))
