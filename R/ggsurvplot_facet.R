@@ -50,7 +50,7 @@ NULL
 #'fit2 <- survfit( Surv(time, status) ~ sex + rx, data = colon )
 #'ggsurvplot_facet(fit2, colon, facet.by = "adhere",
 #'                 palette = "jco", pval = TRUE)
-#'
+#'@import lemon
 #'@export
 ggsurvplot_facet <- function(fit, data, facet.by,
                              color = NULL, palette = NULL,
